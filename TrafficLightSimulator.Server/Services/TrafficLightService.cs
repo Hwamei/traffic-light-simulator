@@ -12,7 +12,6 @@ namespace TrafficLightSimulator.Server.Services
         private readonly IHubContext<TrafficLightHub> _hubContext;
         private readonly AppSettings _appSettings;
         private readonly TrafficLightMessage _trafficLightMessage;
-        private readonly JsonSerializerOptions _jsonSerializerOptions;
 
         private readonly TimeSpan _normalHoursUpdateInterval;
         private readonly TimeSpan _peakHoursAxisYUpdateInterval;
@@ -38,11 +37,6 @@ namespace TrafficLightSimulator.Server.Services
             _hubContext = hubContext;
             _appSettings = appSettings.Value;
             _trafficLightMessage = new TrafficLightMessage();
-            _jsonSerializerOptions = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
 
             _normalHoursUpdateInterval = TimeSpan.FromSeconds(_appSettings.NormalHoursIntervalInSeconds);
             _peakHoursAxisYUpdateInterval = TimeSpan.FromSeconds(_appSettings.PeakHoursAxisYIntervalInSeconds);
