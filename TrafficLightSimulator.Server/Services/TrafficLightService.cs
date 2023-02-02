@@ -11,7 +11,7 @@ namespace TrafficLightSimulator.Server.Services
     {
         private readonly IHubContext<TrafficLightHub> _hubContext;
         private readonly AppSettings _appSettings;
-        private readonly TrafficLightMessage _trafficLightMessage;
+        public readonly TrafficLightMessage _trafficLightMessage;
 
         private readonly TimeSpan _normalHoursUpdateInterval;
         private readonly TimeSpan _peakHoursAxisYUpdateInterval;
