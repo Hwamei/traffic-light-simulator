@@ -4,13 +4,13 @@ Traffic Light Simulator implementation with C# based on .Net 6, SignalR and Angu
 - **TrafficLightSimulator.Server**
 The poject contains the code for the server
 
-- **ToyRobotSimulator.Client**
+- **TrafficLightSimulator.Client**
 The project is an Angular Client
 
-- **ToyRobotSimulator.ConsoleApp**
+- **TrafficLightSimulator.ConsoleApp**
 The project is a .Net Client
 
-- **ToyRobotSimulator.Tests**
+- **TrafficLightSimulator.Tests**
 The project contains the tests for the server
 
 # Getting Started
@@ -51,13 +51,13 @@ In this test we would like you to implement a traffic light system. We are requi
 
 Implementation/Outcomes:
 
-1. Implement a front-end and backend (you can use ¡®dotnet new¡¯ templates of your choice)
+1. Implement a front-end and backend (you can use Â¡Â®dotnet newÂ¡Â¯ templates of your choice)
 
 2. The backend will contain the logic and state of the running traffic lights. The front-end will be a visual representation of the traffic lights, with the data served from the backend.
 
-3. There¡¯s no need to have a perfect design on the front end, something simple and functional is fine (unless this is an area of strength you would like to show off). Noting* we will review the client side code.
+3. ThereÂ¡Â¯s no need to have a perfect design on the front end, something simple and functional is fine (unless this is an area of strength you would like to show off). Noting* we will review the client side code.
 
-4. There¡¯s no need to implement entity framework (or similar) to store the data in a database, a in-memory store is fine
+4. ThereÂ¡Â¯s no need to implement entity framework (or similar) to store the data in a database, a in-memory store is fine
 
 5. Code needs to follow architecture & best practices for enterprise grade systems
 
