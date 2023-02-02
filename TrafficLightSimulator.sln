@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLightSimulator.Server", "TrafficLightSimulator.Server\TrafficLightSimulator.Server.csproj", "{E7B98A03-10A2-4C04-879D-C6525C33B752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLightSimulator.Server.Tests", "TrafficLightSimulator.Server.Tests\TrafficLightSimulator.Server.Tests.csproj", "{9187F3EB-A240-485C-B781-78B61580E407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLightSimulator.Client", "TrafficLightSimulator.Client\TrafficLightSimulator.Client.csproj", "{63678846-D575-4066-BEB7-5CC5317C0FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLightSimulator.ConsoleApp", "TrafficLightSimulator.ConsoleApp\TrafficLightSimulator.ConsoleApp.csproj", "{8CFC161C-089E-4308-AC15-C21151D0A657}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7B98A03-10A2-4C04-879D-C6525C33B752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B98A03-10A2-4C04-879D-C6525C33B752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B98A03-10A2-4C04-879D-C6525C33B752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B98A03-10A2-4C04-879D-C6525C33B752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9187F3EB-A240-485C-B781-78B61580E407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9187F3EB-A240-485C-B781-78B61580E407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9187F3EB-A240-485C-B781-78B61580E407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9187F3EB-A240-485C-B781-78B61580E407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63678846-D575-4066-BEB7-5CC5317C0FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63678846-D575-4066-BEB7-5CC5317C0FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63678846-D575-4066-BEB7-5CC5317C0FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63678846-D575-4066-BEB7-5CC5317C0FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFC161C-089E-4308-AC15-C21151D0A657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFC161C-089E-4308-AC15-C21151D0A657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFC161C-089E-4308-AC15-C21151D0A657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFC161C-089E-4308-AC15-C21151D0A657}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57AF3669-963F-4245-B351-B586F06856D5}
+	EndGlobalSection
+EndGlobal

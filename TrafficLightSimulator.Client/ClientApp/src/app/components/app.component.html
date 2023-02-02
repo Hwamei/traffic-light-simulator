@@ -1,0 +1,44 @@
+<body>
+  <div class="container">
+    <h3>{{title}}</h3>
+    <p>{{current}}</p>
+
+    <div class="wrap" *ngIf="trafficLights && trafficLights.length > 0">
+      <div class="parent-container">
+        <div class="child-container"></div>
+        <div class="child-container traffic-light-container" *ngIf="northbound">
+          <div class="light red-light" [ngStyle]="{'background': northbound.TrafficLightStatusDict.Red ? 'red' : 'grey' }"></div>
+          <div class="light yellow-light" [ngStyle]="{'background': northbound.TrafficLightStatusDict.Yellow ? 'yellow' : 'grey' }"></div>
+          <div class="light green-light" [ngStyle]="{'background': northbound.TrafficLightStatusDict.Green ? 'green' : 'grey' }"></div>
+          <div class="light right-turn-light" [ngStyle]="{'background': northbound.TrafficLightStatusDict.RightTurn ? 'green' : 'grey' }">-></div>
+        </div>
+        <div class="child-container"></div>
+      </div>
+      <div class="parent-container">
+        <div class="child-container traffic-light-container" *ngIf="westbound">
+          <div class="light red-light" [ngStyle]="{'background': westbound.TrafficLightStatusDict.Red ? 'red' : 'grey' }"></div>
+          <div class="light yellow-light" [ngStyle]="{'background': westbound.TrafficLightStatusDict.Yellow ? 'yellow' : 'grey' }"></div>
+          <div class="light green-light" [ngStyle]="{'background': westbound.TrafficLightStatusDict.Green ? 'green' : 'grey' }"></div>
+          <div class="light right-turn-light" [ngStyle]="{'background': westbound.TrafficLightStatusDict.RightTurn ? 'green' : 'grey' }">-></div>
+        </div>
+        <div class="child-container"></div>
+        <div class="child-container traffic-light-container" *ngIf="eastbound">
+          <div class="light red-light" [ngStyle]="{'background': eastbound.TrafficLightStatusDict.Red ? 'red' : 'grey' }"></div>
+          <div class="light yellow-light" [ngStyle]="{'background': eastbound.TrafficLightStatusDict.Yellow ? 'yellow' : 'grey' }"></div>
+          <div class="light green-light" [ngStyle]="{'background': eastbound.TrafficLightStatusDict.Green ? 'green' : 'grey' }"></div>
+          <div class="light right-turn-light" [ngStyle]="{'background': eastbound.TrafficLightStatusDict.RightTurn ? 'green' : 'grey' }">-></div>
+        </div>
+      </div>
+      <div class="parent-container">
+        <div class="child-container"></div>
+        <div class="child-container traffic-light-container" *ngIf="southbound">
+          <div class="light red-light" [ngStyle]="{'background': southbound.TrafficLightStatusDict.Red ? 'red' : 'grey' }"></div>
+          <div class="light yellow-light" [ngStyle]="{'background': southbound.TrafficLightStatusDict.Yellow ? 'yellow' : 'grey' }"></div>
+          <div class="light green-light" [ngStyle]="{'background': southbound.TrafficLightStatusDict.Green ? 'green' : 'grey' }"></div>
+          <div class="light right-turn-light" [ngStyle]="{'background': southbound.TrafficLightStatusDict.RightTurn ? 'green' : 'grey' }">-></div>
+        </div>
+        <div class="child-container"></div>
+      </div>
+    </div>
+  </div>
+</body>
