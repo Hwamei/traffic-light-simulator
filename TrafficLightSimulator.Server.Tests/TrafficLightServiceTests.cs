@@ -17,6 +17,13 @@ namespace TrafficLightSimulator.Server.Tests
         private readonly Mock<IHubClients> _mockClients = new();
         private readonly Mock<HubCallerContext> _mockContext = new();
 
+        private readonly TrafficLightService _trafficLightService;
+        private readonly TrafficLightMessage _message;
+        private readonly Dictionary<StatusEnum, bool> _northbound;
+        private readonly Dictionary<StatusEnum, bool> _southbound;
+        private readonly Dictionary<StatusEnum, bool> _eastbound;
+        private readonly Dictionary<StatusEnum, bool> _westbound;
+
         public TrafficLightServiceTests()
         {
             _hub = new Mock<IHubContext<TrafficLightHub>>();
@@ -40,40 +47,78 @@ namespace TrafficLightSimulator.Server.Tests
                 IsNorthboundRightTurnEnabled = false
             };
             _mockAppSettings.Setup(ap => ap.Value).Returns(appSettings);
+
+            _trafficLightService = new TrafficLightService(_hub.Object, _mockAppSettings.Object);
+            _message = _trafficLightService._trafficLightMessage;
+
+            _northbound = _message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Northbound).Select(tl => tl.TrafficLightStatusDict).Single();
+            _southbound = _message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Southbound).Select(tl => tl.TrafficLightStatusDict).Single();
+            _eastbound = _message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Eastbound).Select(tl => tl.TrafficLightStatusDict).Single();
+            _westbound = _message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Westbound).Select(tl => tl.TrafficLightStatusDict).Single();
         }
 
         [Fact]
         public void TestTrafficLightService_Init_ExpectedResult()
         {
-            var trafficLightService = new TrafficLightService(_hub.Object, _mockAppSettings.Object);
+            Assert.Equal(4, _message.TrafficLights.Length);
 
-            var message = trafficLightService._trafficLightMessage;
+            Assert.True(_northbound[StatusEnum.Green]);
+            Assert.False(_northbound[StatusEnum.Yellow]);
+            Assert.False(_northbound[StatusEnum.Red]);
+            Assert.False(_northbound[StatusEnum.RightTurn]);
 
-            Assert.Equal(4, message.TrafficLights.Length);
+            Assert.True(_southbound[StatusEnum.Green]);
+            Assert.False(_southbound[StatusEnum.Yellow]);
+            Assert.False(_southbound[StatusEnum.Red]);
+            Assert.False(_southbound[StatusEnum.RightTurn]);
 
-            var northbound = message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Northbound).Select(tl => tl.TrafficLightStatusDict).Single();
-            Assert.True(northbound[StatusEnum.Green]);
-            Assert.False(northbound[StatusEnum.Yellow]);
-            Assert.False(northbound[StatusEnum.Red]);
-            Assert.False(northbound[StatusEnum.RightTurn]);
+            Assert.True(_eastbound[StatusEnum.Red]);
+            Assert.False(_eastbound[StatusEnum.Yellow]);
+            Assert.False(_eastbound[StatusEnum.Green]);
+            Assert.False(_eastbound[StatusEnum.RightTurn]);
 
-            var southbound = message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Southbound).Select(tl => tl.TrafficLightStatusDict).Single();
-            Assert.True(southbound[StatusEnum.Green]);
-            Assert.False(southbound[StatusEnum.Yellow]);
-            Assert.False(southbound[StatusEnum.Red]);
-            Assert.False(southbound[StatusEnum.RightTurn]);
+            Assert.True(_westbound[StatusEnum.Red]);
+            Assert.False(_westbound[StatusEnum.Yellow]);
+            Assert.False(_westbound[StatusEnum.Green]);
+            Assert.False(_westbound[StatusEnum.RightTurn]);
+        }
 
-            var eastbound = message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Eastbound).Select(tl => tl.TrafficLightStatusDict).Single();
-            Assert.True(eastbound[StatusEnum.Red]);
-            Assert.False(eastbound[StatusEnum.Yellow]);
-            Assert.False(eastbound[StatusEnum.Green]);
-            Assert.False(eastbound[StatusEnum.RightTurn]);
+        [Fact]
+        public void TestTrafficLightService_Update_Once_ExpectedResult()
+        {
+            _trafficLightService.Update(null);
 
-            var westbound = message.TrafficLights.Where(tl => tl.Direction == DirectionEnum.Westbound).Select(tl => tl.TrafficLightStatusDict).Single();
-            Assert.True(westbound[StatusEnum.Red]);
-            Assert.False(westbound[StatusEnum.Yellow]);
-            Assert.False(westbound[StatusEnum.Green]);
-            Assert.False(westbound[StatusEnum.RightTurn]);
+            Assert.Equal(4, _message.TrafficLights.Length);
+
+            Assert.True(_northbound[StatusEnum.Yellow]);
+            Assert.False(_northbound[StatusEnum.Green]);
+            Assert.False(_northbound[StatusEnum.Red]);
+            Assert.False(_northbound[StatusEnum.RightTurn]);
+
+            Assert.True(_southbound[StatusEnum.Yellow]);
+            Assert.False(_southbound[StatusEnum.Green]);
+            Assert.False(_southbound[StatusEnum.Red]);
+            Assert.False(_southbound[StatusEnum.RightTurn]);
+
+            Assert.True(_eastbound[StatusEnum.Red]);
+            Assert.False(_eastbound[StatusEnum.Yellow]);
+            Assert.False(_eastbound[StatusEnum.Green]);
+            Assert.False(_eastbound[StatusEnum.RightTurn]);
+
+            Assert.True(_westbound[StatusEnum.Red]);
+            Assert.False(_westbound[StatusEnum.Yellow]);
+            Assert.False(_westbound[StatusEnum.Green]);
+            Assert.False(_westbound[StatusEnum.RightTurn]);
+        }
+
+        [Fact]
+        public void TestTrafficLightService_Update_Twice_ExpectedResult()
+        {
+            _trafficLightService.Update(null);
+            _trafficLightService.Update(null);
+
+            Assert.Equal(4, _message.TrafficLights.Length);
+            Assert.False(_message.TrafficLights.All(tl => tl.TrafficLightStatusDict.All(v => v.Value)));
         }
     }
 }

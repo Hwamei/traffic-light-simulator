@@ -74,7 +74,7 @@ namespace TrafficLightSimulator.Server.Services
         private void SetTimer(TimeSpan interval) 
             => _timer.Change(interval, interval);
 
-        private void Update(object? state)
+        public void Update(object? state)
         {
             try
             {
