@@ -61,4 +61,4 @@ Implementation/Outcomes:
 
 5. Code needs to follow architecture & best practices for enterprise grade systems
 
-Note: Code will be evaluated not just for function, but on the quality of the code.
+Note: Code will be evaluated not just for function, but on the quality of the code. Suggested submit within 24 hours.
